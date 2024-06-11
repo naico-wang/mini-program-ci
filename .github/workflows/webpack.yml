@@ -26,4 +26,4 @@ jobs:
       run: |
         npm install
         npm run build:weapp
-        npm run upload
+        npm run weapp:upload
