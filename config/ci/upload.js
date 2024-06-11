@@ -1,13 +1,11 @@
 const ci = require('miniprogram-ci')
-let { wxVersion: version, wxDesc: desc } = require('../../package.json').wx
+const { version } = require('../../package.json')
 
-if (!version) version = 'v1.0.0'
-if (!desc) desc = new Date() + '上传'
-
+const desc = 'TestCI Bot Uploaded'
 const project = new ci.Project({
   appid: 'wx00b2480d67a90d90',
   type: 'miniProgram',
-  projectPath: process.cwd(),
+  projectPath: process.cwd() + '/dist/',
   privateKeyPath: process.cwd() + '/config/ci/private.wx00b2480d67a90d90.key',
   ignores: ['node_modules/**/*'],
 })
@@ -21,7 +19,7 @@ ci.upload({
 }).then(res => {
   console.log(res)
   console.log('上传成功')
-  process.exit(-1)
+  process.exit(0)
 }).catch(error => {
   if (error.errCode === -1) {
     console.log('上传成功')
