@@ -5,7 +5,7 @@ const desc = 'TestCI Bot Uploaded'
 const project = new ci.Project({
   appid: 'wx00b2480d67a90d90',
   type: 'miniProgram',
-  projectPath: process.cwd() + '/dist/',
+  projectPath: process.cwd(),
   privateKeyPath: process.cwd() + '/config/ci/private.wx00b2480d67a90d90.key',
   ignores: ['node_modules/**/*'],
 })
@@ -15,6 +15,9 @@ ci.upload({
   desc,
   setting: {
     minify: true,
+    autoPrefixWXSS: true,
+    minifyWXML: true,
+    minifyWXSS: true
   },
 }).then(res => {
   console.log(res)
